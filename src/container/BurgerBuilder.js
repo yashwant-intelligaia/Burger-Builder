@@ -1,29 +1,32 @@
 import React from 'react';
-import {BurgerIngredient} from './../component/Burger/BurgerIngredient';
+import {Burger} from '../component/Burger/Burger';
 import {BurgerMenu} from './../component/Burger/BurgerMenu';
-// const price = {
-//     salad:0.5,
-//     bacon:0.4,
-//     cheese:0.2,
-//     meat:1
-// }
+// import {BurgerOrder} from './../component/Burger/BurgerOrder';
 export class BurgerBuilder extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             ingredient:{
-                salad:0,
-                bacon:0,
-                cheese:0,
+                salad:3,
+                bacon:2,
+                cheese:1,
                 meat:0
-            }
+            },
+            total:2,
+            order:false,
+            price :{
+                salad:0.2,
+                bacon:0.4,
+                cheese:0.2,
+                meat:1
+            },
+            maxQuantity:3
         };
-        this.total = 2;
         this.handleAddIngredient = this.handleAddIngredient.bind(this);
-        // this.removeIngredient = this.removeIngredient.bind(this);
+        this.handleRemoveIngredient = this.handleRemoveIngredient.bind(this);
     }
 
-    handleAddIngredient(type){
+    handleAddIngredient = (type) =>{
         var previousCount = this.state.ingredient[type];
         console.log('-------------Add Ingredient-------------');
         console.log('previousCount of'+type+'=>',previousCount);
@@ -31,7 +34,7 @@ export class BurgerBuilder extends React.Component {
         console.log('newCount of'+type+'=>',newCount);
     }
 
-    removeIngredient(type){
+    handleRemoveIngredient = (type) =>{
         console.log('-------------Remove Ingredient-------------');
         var previousCount = this.state.ingredient[type];
         console.log('previousCount of'+type+'=>',previousCount);
@@ -42,9 +45,12 @@ export class BurgerBuilder extends React.Component {
     render() {
         return (
             <div className="container">
+            {/* <Modal show={this.state.order} modalClosed={this.puchaseCancelHandler}>
+            <BurgerOrder ingredient={this.state.ingredient} total={this.state.total}/>
+            </Modal> */}
                 <div className="row">
-                    <BurgerIngredient />
-                    <BurgerMenu />
+                    <Burger ingredient={this.state.ingredient}/>
+                    <BurgerMenu ingredient={this.state.ingredient} total={this.state.total} price={this.state.price} maxQuantity={this.state.maxQuantity} addIngredient={this.handleAddIngredient} removeIngredient={this.handleRemoveIngredient}/>
                 </div>
             </div>
         );
