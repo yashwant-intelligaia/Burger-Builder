@@ -1,7 +1,7 @@
 import React from 'react';
 import {Burger} from '../component/Burger/Burger';
-import {BurgerMenu} from './../component/Burger/BurgerMenu';
-// import {BurgerOrder} from './../component/Burger/BurgerOrder';
+import {Menu} from './../component/Burger/Menu';
+// import {Order} from './../component/Burger/Order';
 export class BurgerBuilder extends React.Component {
     constructor(props) {
         super(props);
@@ -46,11 +46,11 @@ export class BurgerBuilder extends React.Component {
         return (
             <div className="container">
             {/* <Modal show={this.state.order} modalClosed={this.puchaseCancelHandler}>
-            <BurgerOrder ingredient={this.state.ingredient} total={this.state.total}/>
+            <Order ingredient={this.state.ingredient} total={this.state.total}/>
             </Modal> */}
                 <div className="row">
                     <Burger ingredient={this.state.ingredient}/>
-                    <BurgerMenu ingredient={this.state.ingredient} total={this.state.total} price={this.state.price} maxQuantity={this.state.maxQuantity} addIngredient={this.handleAddIngredient} removeIngredient={this.handleRemoveIngredient}/>
+                    <Menu ingredient={this.state.ingredient} total={this.state.total} price={this.state.price} maxQuantity={this.state.maxQuantity} addIngredient={this.handleAddIngredient} removeIngredient={this.handleRemoveIngredient}/>
                 </div>
             </div>
         );

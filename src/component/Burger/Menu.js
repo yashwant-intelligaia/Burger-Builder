@@ -7,7 +7,7 @@ const items = [
     { label: 'Cheese', key: 'cheese' },
     { label: 'Meat', key: 'meat' },
 ]
-export class BurgerMenu extends React.Component {
+export class Menu extends React.Component {
     render() {
         return (
             <div className="col-sm-6 col-xs-12 text-center" style={{ marginTop: 20 }}>
