@@ -1,8 +1,44 @@
 import React from 'react';
-import { Jumbotron, Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import './../../style/burger.css';
+import { Jumbotron, Button, ButtonGroup} from 'reactstrap';
+import './../style/burger.css';
+// const price = {
+//     salad:0.5,
+//     bacon:0.4,
+//     cheese:0.2,
+//     meat:1
+// }
+export class BurgerBuilder extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            ingredient:{
+                salad:0,
+                bacon:0,
+                cheese:0,
+                meat:0
+            }
+        };
+        this.total = 2;
+        this.handleAddIngredient = this.handleAddIngredient.bind(this);
+        // this.removeIngredient = this.removeIngredient.bind(this);
+    }
 
-export class Burger extends React.Component {
+    handleAddIngredient(type){
+        var previousCount = this.state.ingredient[type];
+        console.log('-------------Add Ingredient-------------');
+        console.log('previousCount of'+type+'=>',previousCount);
+        var newCount = previousCount+1;
+        console.log('newCount of'+type+'=>',newCount);
+    }
+
+    removeIngredient(type){
+        console.log('-------------Remove Ingredient-------------');
+        var previousCount = this.state.ingredient[type];
+        console.log('previousCount of'+type+'=>',previousCount);
+        var newCount = previousCount-1;
+        console.log('newCount of'+type+'=>',newCount);
+    }
+
     render() {
         return (
             <div className="container">
@@ -39,7 +75,7 @@ export class Burger extends React.Component {
                                         <td>Salad</td>
                                         <td>
                                             <ButtonGroup>
-                                                <Button title="Add">+</Button>&nbsp;
+                                                <Button title="Add" onClick={this.handleAddIngredient}>+</Button>&nbsp;
                                                 <Button title="Less">-</Button>
                                             </ButtonGroup>
                                         </td>
@@ -53,7 +89,7 @@ export class Burger extends React.Component {
                                             </ButtonGroup>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr> 
                                         <td>Cheese</td>
                                         <td>
                                             <ButtonGroup>

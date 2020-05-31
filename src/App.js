@@ -1,8 +1,8 @@
 import React from 'react';
-import { BurgerBuilderContainer } from './container/BurgerBuilderContainer';
+import { BurgerBuilder } from './container/BurgerBuilder';
 function App() {
   return (
-    <BurgerBuilderContainer/>
+    <BurgerBuilder/>
   );
 }
 
